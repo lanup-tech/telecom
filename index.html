@@ -1,0 +1,1302 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Seven 360 Telecom | Hub 360 + Vivo Tech</title>
+  <style>
+    :root {
+      --bg: #06020e;
+      --bg-2: #0c0820;
+      --ink: #ffffff;
+      --muted: rgba(255,255,255,.68);
+      --soft: rgba(255,255,255,.46);
+      --line: rgba(255,255,255,.18);
+      --panel: rgba(255,255,255,.10);
+      --panel-strong: rgba(255,255,255,.16);
+      --purple: #7c35ff;
+      --violet: #b15cff;
+      --green: #8df45f;
+      --cyan: #5be7ff;
+      --dark-card: rgba(10, 7, 24, .72);
+      --shadow: 0 24px 70px rgba(0,0,0,.42);
+      --shadow-soft: 0 18px 55px rgba(35, 7, 78, .28);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 8%, rgba(141,244,95,.20), transparent 26rem),
+        radial-gradient(circle at 84% 14%, rgba(91,231,255,.18), transparent 24rem),
+        radial-gradient(circle at 50% 46%, rgba(124,53,255,.35), transparent 40rem),
+        linear-gradient(140deg, var(--bg), var(--bg-2) 46%, #03010a);
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -35vh -20vw auto auto;
+      width: 56rem;
+      height: 56rem;
+      pointer-events: none;
+      background: conic-gradient(from 70deg, transparent, rgba(141,244,95,.16), rgba(124,53,255,.22), rgba(91,231,255,.16), transparent);
+      filter: blur(70px);
+      opacity: .78;
+      animation: drift 18s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    body::after {
+      inset: auto auto -40vh -18vw;
+      width: 50rem;
+      height: 50rem;
+      animation-duration: 22s;
+      animation-direction: alternate-reverse;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(-2rem, 1rem, 0) rotate(0deg) scale(1); }
+      to { transform: translate3d(5rem, -2rem, 0) rotate(24deg) scale(1.08); }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+    button, input, select, textarea { font: inherit; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at 50% 20%, black, transparent 78%);
+    }
+
+    .page {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .glass {
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.06) 48%, rgba(255,255,255,.12)),
+        rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.30), inset 0 -1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(28px) saturate(170%);
+      -webkit-backdrop-filter: blur(28px) saturate(170%);
+      overflow: hidden;
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,255,255,.34), transparent 20rem),
+        linear-gradient(105deg, transparent 0 20%, rgba(255,255,255,.17) 39%, transparent 54% 100%);
+      opacity: .72;
+      mix-blend-mode: screen;
+    }
+
+    .glass > * { position: relative; z-index: 1; }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .42rem .75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.76);
+      font-size: .78rem;
+      letter-spacing: .02em;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(141,244,95,.14), 0 0 24px rgba(141,244,95,.65);
+    }
+
+    .nav-shell {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      padding: 14px 0;
+    }
+
+    .nav {
+      min-height: 66px;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 12px 10px 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 230px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 32% 20%, rgba(255,255,255,.9), transparent 30%),
+        conic-gradient(from 20deg, var(--green), var(--cyan), var(--purple), var(--green));
+      box-shadow: 0 14px 38px rgba(124,53,255,.38), inset 0 0 14px rgba(255,255,255,.25);
+      display: grid;
+      place-items: center;
+      color: #0a0514;
+      font-weight: 900;
+      letter-spacing: -.08em;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: .95rem;
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      margin-top: 4px;
+      font-size: .75rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      padding: .65rem .85rem;
+      color: rgba(255,255,255,.70);
+      border-radius: var(--radius-pill);
+      transition: .2s ease;
+      font-size: .88rem;
+    }
+
+    .nav-links a:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .85rem 1.05rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,.18);
+      cursor: pointer;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.20);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.30); }
+    .btn-primary {
+      color: #12051d;
+      border: none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.62)),
+        linear-gradient(135deg, var(--green), var(--cyan));
+      box-shadow: 0 16px 46px rgba(141,244,95,.22), inset 0 1px 0 rgba(255,255,255,.95);
+      font-weight: 800;
+    }
+
+    .btn-accent {
+      background: linear-gradient(135deg, rgba(141,244,95,.96), rgba(91,231,255,.86));
+      color: #06110a;
+      border: none;
+      font-weight: 800;
+    }
+
+    .btn-small { padding: .62rem .82rem; font-size: .82rem; }
+
+    .hero {
+      padding: 50px 0 34px;
+    }
+
+    .hero-card {
+      min-height: 710px;
+      border-radius: 48px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 32px;
+      isolation: isolate;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 40px;
+      pointer-events: none;
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: inset 0 0 70px rgba(255,255,255,.035);
+      z-index: 0;
+    }
+
+    .hero-copy {
+      align-self: center;
+      max-width: 680px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(3.1rem, 7vw, 6.8rem);
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 820;
+      max-width: 850px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #fff, #cbfdb6 35%, #94f2ff 70%, #e5ceff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      color: rgba(255,255,255,.74);
+      font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+      line-height: 1.62;
+      margin-top: 24px;
+      max-width: 680px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    .hero-visual {
+      align-self: stretch;
+      min-height: 600px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .phone-glass {
+      width: min(380px, 100%);
+      aspect-ratio: .62;
+      border-radius: 42px;
+      padding: 14px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.42), rgba(255,255,255,.08)),
+        rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.32);
+      box-shadow: 0 36px 110px rgba(0,0,0,.48), inset 0 0 34px rgba(255,255,255,.08);
+      backdrop-filter: blur(26px) saturate(180%);
+      -webkit-backdrop-filter: blur(26px) saturate(180%);
+      transform: rotate(3deg);
+      position: relative;
+    }
+
+    .phone-screen {
+      height: 100%;
+      border-radius: 32px;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(141,244,95,.28), transparent 12rem),
+        radial-gradient(circle at 80% 20%, rgba(91,231,255,.22), transparent 12rem),
+        linear-gradient(180deg, rgba(16,10,34,.95), rgba(6,2,14,.92));
+      border: 1px solid rgba(255,255,255,.14);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-screen::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 112px;
+      height: 28px;
+      border-radius: var(--radius-pill);
+      background: rgba(0,0,0,.52);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-card {
+      border-radius: 24px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.17);
+      padding: 16px;
+      margin-top: 34px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    .mini-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .mini-title { color: rgba(255,255,255,.64); font-size: .8rem; }
+    .mini-value { font-size: 1.35rem; font-weight: 780; letter-spacing: -.04em; margin-top: 6px; }
+    .bar {
+      height: 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,.12);
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--green), var(--cyan)); }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(.2px);
+      opacity: .88;
+      animation: float 5.5s ease-in-out infinite alternate;
+    }
+    .orb.one { width: 92px; height: 92px; background: radial-gradient(circle at 34% 24%, #fff, var(--green) 28%, rgba(141,244,95,.15) 70%); top: 12%; right: 9%; }
+    .orb.two { width: 70px; height: 70px; background: radial-gradient(circle at 35% 25%, #fff, var(--cyan) 28%, rgba(91,231,255,.18) 70%); bottom: 14%; left: 2%; animation-delay: -.8s; }
+    .orb.three { width: 118px; height: 118px; background: radial-gradient(circle at 35% 25%, #fff, var(--violet) 28%, rgba(177,92,255,.14) 70%); bottom: 5%; right: -6%; animation-delay: -1.4s; }
+
+    @keyframes float {
+      from { transform: translateY(0) translateX(0); }
+      to { transform: translateY(-18px) translateX(12px); }
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .74rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 4.4vw, 4.9rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 820;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .metric {
+      border-radius: 26px;
+      padding: 22px;
+      min-height: 156px;
+    }
+
+    .metric small { color: var(--muted); display: block; margin-bottom: 16px; }
+    .metric strong {
+      font-size: clamp(2rem, 3.2vw, 3.8rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      display: block;
+    }
+    .metric span { color: rgba(255,255,255,.64); display: block; margin-top: 12px; line-height: 1.45; font-size: .92rem; }
+
+    .product-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 12px 0 18px;
+      flex-wrap: wrap;
+    }
+
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter {
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.68);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius-pill);
+      padding: .6rem .8rem;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .filter.active,
+    .filter:hover {
+      color: #07100b;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      border-color: transparent;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      min-height: 286px;
+      border-radius: 30px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .24s ease, border-color .24s ease;
+    }
+
+    .product-card:hover { transform: translateY(-5px); border-color: rgba(141,244,95,.42); }
+    .product-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .icon-bubble {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #07100b;
+      font-weight: 900;
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(141,244,95,.85));
+      box-shadow: 0 14px 30px rgba(141,244,95,.18);
+      flex: none;
+    }
+    .product-card h3 { font-size: 1.34rem; letter-spacing: -.035em; margin: 16px 0 10px; }
+    .product-card p { color: rgba(255,255,255,.68); line-height: 1.55; font-size: .95rem; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .tag { font-size: .72rem; color: rgba(255,255,255,.70); border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.055); padding: .38rem .52rem; border-radius: var(--radius-pill); }
+
+    .hub-wrap {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hub-orbit {
+      min-height: 590px;
+      border-radius: 42px;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      position: relative;
+    }
+
+    .orbit-ring {
+      width: min(520px, 100%);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle, rgba(141,244,95,.16), transparent 33%),
+        radial-gradient(circle at 70% 20%, rgba(91,231,255,.15), transparent 32%);
+    }
+    .orbit-ring::before,
+    .orbit-ring::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 50%;
+      inset: 16%;
+    }
+    .orbit-ring::after { inset: 30%; }
+
+    .hub-center {
+      position: absolute;
+      inset: 35%;
+      border-radius: 34px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.20);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.24), 0 18px 50px rgba(0,0,0,.30);
+    }
+    .hub-center strong { font-size: 1.32rem; letter-spacing: -.04em; }
+    .hub-center span { color: rgba(255,255,255,.62); font-size: .78rem; margin-top: 7px; }
+
+    .orbit-node {
+      position: absolute;
+      width: 148px;
+      min-height: 82px;
+      border-radius: 24px;
+      padding: 12px 13px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.17);
+      box-shadow: 0 14px 42px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.18);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+    .orbit-node b { display: block; font-size: .84rem; letter-spacing: -.02em; }
+    .orbit-node span { color: rgba(255,255,255,.60); font-size: .72rem; line-height: 1.35; display: block; margin-top: 5px; }
+    .node-1 { top: 4%; left: 50%; transform: translateX(-50%); }
+    .node-2 { top: 34%; right: -2%; }
+    .node-3 { bottom: 8%; right: 10%; }
+    .node-4 { bottom: 8%; left: 10%; }
+    .node-5 { top: 34%; left: -2%; }
+
+    .hub-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .process-card {
+      border-radius: 28px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #07100b;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      font-weight: 900;
+    }
+    .process-card h3 { font-size: 1.12rem; letter-spacing: -.025em; margin-bottom: 6px; }
+    .process-card p { color: rgba(255,255,255,.66); line-height: 1.55; }
+
+    .case-layout {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .case-hero {
+      border-radius: 42px;
+      padding: 32px;
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .formula {
+      display: grid;
+      gap: 10px;
+      margin-top: 32px;
+      max-width: 520px;
+    }
+    .formula-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .formula-pill {
+      padding: .78rem .95rem;
+      border-radius: 20px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.82);
+    }
+    .formula-equal { color: var(--green); font-weight: 900; font-size: 2rem; }
+
+    .case-side { display: grid; gap: 14px; }
+    .case-stat {
+      border-radius: 28px;
+      padding: 24px;
+      min-height: 136px;
+    }
+    .case-stat small { color: rgba(255,255,255,.60); display: block; margin-bottom: 10px; }
+    .case-stat strong { display: block; font-size: 2.2rem; letter-spacing: -.055em; }
+    .case-stat p { color: rgba(255,255,255,.64); line-height: 1.48; margin-top: 8px; font-size: .92rem; }
+
+    .funnel {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .funnel-step {
+      min-height: 142px;
+      border-radius: 26px;
+      padding: 18px;
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .funnel-step strong { font-size: 1.65rem; letter-spacing: -.05em; display: block; }
+    .funnel-step span { color: rgba(255,255,255,.60); line-height: 1.45; display: block; margin-top: 8px; font-size: .88rem; }
+
+    .crm-board {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(150px, 1fr));
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .crm-col {
+      min-width: 155px;
+      border-radius: 26px;
+      padding: 14px;
+      background: rgba(255,255,255,.075);
+      border: 1px solid rgba(255,255,255,.13);
+    }
+    .crm-col h3 { font-size: .88rem; letter-spacing: -.02em; margin-bottom: 12px; color: rgba(255,255,255,.82); }
+    .deal {
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 10px;
+    }
+    .deal b { display: block; font-size: .82rem; }
+    .deal span { display: block; color: rgba(255,255,255,.60); font-size: .72rem; margin-top: 6px; line-height: 1.35; }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .ai-card {
+      border-radius: 30px;
+      padding: 24px;
+      min-height: 224px;
+    }
+    .ai-card h3 { font-size: 1.18rem; letter-spacing: -.03em; margin: 18px 0 10px; }
+    .ai-card p { color: rgba(255,255,255,.66); line-height: 1.56; }
+
+    .founders {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .founder {
+      border-radius: 32px;
+      padding: 24px;
+      min-height: 318px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.92), transparent 30%),
+        linear-gradient(135deg, rgba(141,244,95,.86), rgba(124,53,255,.88));
+      display: grid;
+      place-items: center;
+      color: #07100b;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      box-shadow: 0 16px 46px rgba(124,53,255,.26);
+    }
+    .founder h3 { font-size: 1.3rem; letter-spacing: -.035em; margin: 18px 0 8px; }
+    .founder p { color: rgba(255,255,255,.66); line-height: 1.58; }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .road-card {
+      border-radius: 30px;
+      padding: 24px;
+      min-height: 260px;
+    }
+    .road-card h3 { font-size: 1.18rem; letter-spacing: -.03em; margin: 12px 0 12px; }
+    .road-card ul { margin: 0; padding-left: 18px; color: rgba(255,255,255,.66); line-height: 1.58; }
+
+    .cta-card {
+      border-radius: 46px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .cta-card h2 { max-width: 780px; }
+    .cta-card p { color: rgba(255,255,255,.68); line-height: 1.65; margin-top: 18px; max-width: 760px; }
+
+    .footer {
+      color: rgba(255,255,255,.52);
+      padding: 36px 0 60px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: .88rem;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.62);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      width: min(720px, 100%);
+      border-radius: 34px;
+      padding: 28px;
+    }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+    .modal h3 { font-size: 2rem; letter-spacing: -.055em; }
+    .modal p { color: rgba(255,255,255,.65); line-height: 1.58; margin-top: 8px; }
+    .close {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      cursor: pointer;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: rgba(255,255,255,.68); font-size: .82rem; }
+    input, select, textarea {
+      width: 100%;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.085);
+      border-radius: 18px;
+      padding: .92rem .95rem;
+      outline: none;
+    }
+    textarea { min-height: 92px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: rgba(141,244,95,.55); box-shadow: 0 0 0 4px rgba(141,244,95,.10); }
+    .form-note { color: rgba(255,255,255,.50); font-size: .78rem; line-height: 1.5; margin-top: 14px; }
+
+    .sticky-cta {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 45;
+      display: none;
+    }
+
+    .subtle { color: rgba(255,255,255,.58); }
+    .highlight { color: var(--green); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent); margin: 26px 0; }
+
+    @media (max-width: 1020px) {
+      .nav { align-items: flex-start; flex-wrap: wrap; }
+      .brand { min-width: auto; }
+      .nav-links { order: 3; width: 100%; justify-content: flex-start; }
+      .hero-card, .section-head, .hub-wrap, .case-layout, .cta-card { grid-template-columns: 1fr; }
+      .hero-card { padding: 28px; min-height: auto; }
+      .hero-visual { min-height: 540px; }
+      .metrics, .product-grid, .ai-grid, .founders, .roadmap { grid-template-columns: repeat(2, 1fr); }
+      .cta-card { align-items: start; }
+    }
+
+    @media (max-width: 700px) {
+      .page { width: min(100% - 20px, var(--max)); }
+      .nav-shell { top: 0; padding: 8px 0; }
+      .nav { border-radius: 24px; padding: 10px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 24px; }
+      .hero-card { border-radius: 34px; padding: 22px; }
+      .hero-card::after { inset: 10px; border-radius: 28px; }
+      .hero-visual { min-height: 430px; }
+      .phone-glass { width: min(320px, 92%); }
+      .metrics, .product-grid, .ai-grid, .founders, .roadmap, .funnel { grid-template-columns: 1fr; }
+      .section { padding: 44px 0; }
+      .hub-orbit { min-height: 560px; padding: 16px; }
+      .orbit-node { width: 136px; }
+      .node-2 { right: -8px; }
+      .node-5 { left: -8px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .sticky-cta { display: block; }
+      .footer { padding-bottom: 110px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="nav-shell page">
+    <nav class="nav glass" aria-label="Navegação principal">
+      <a class="brand" href="#top" aria-label="Seven 360 Telecom">
+        <span class="brand-mark">7</span>
+        <span class="brand-text">
+          <strong>Seven 360 Telecom</strong>
+          <span>Vivo Empresas + Hub 360</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="Seções">
+        <a href="#produtos">Produtos Vivo</a>
+        <a href="#hub360">Hub 360</a>
+        <a href="#case">Case</a>
+        <a href="#crm">CRM 360</a>
+        <a href="#doffos">Doffos AI</a>
+      </div>
+      <button class="btn btn-primary btn-small" type="button" data-open-modal>Diagnóstico Vivo Tech</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero page" aria-label="Hero Seven 360 Telecom">
+      <div class="hero-card glass">
+        <div class="hero-copy">
+          <span class="chip"><span class="dot"></span> Case HTML para validação interna</span>
+          <h1 style="margin-top:22px;">Conectividade Vivo, <span class="gradient-text">Vivo Tech</span> e IA para empresas B2B.</h1>
+          <p class="lead">A Seven 360 Telecom organiza produtos Vivo Empresarial, gestão comercial, pós-venda e automação com IA em um ecossistema único: o Hub 360. A proposta é transformar aquisição, diagnóstico, proposta e retenção em uma operação previsível.</p>
+          <div class="hero-actions">
+            <button class="btn btn-accent" type="button" data-open-modal>Quero diagnóstico Vivo Tech</button>
+            <a class="btn" href="#case">Validar case operacional</a>
+          </div>
+          <div class="metrics" aria-label="Indicadores do case">
+            <div class="metric glass">
+              <small>Setup comercial</small>
+              <strong>5+1</strong>
+              <span>Hunters + especialista para ramp-up inicial.</span>
+            </div>
+            <div class="metric glass">
+              <small>Investimento base</small>
+              <strong>R$87k</strong>
+              <span>Blueprint provisionado para iniciar a operação.</span>
+            </div>
+            <div class="metric glass">
+              <small>Motor IA + humano</small>
+              <strong>4k</strong>
+              <span>Contatos ativos mapeados na frente de leads.</span>
+            </div>
+            <div class="metric glass">
+              <small>Meta de maturidade</small>
+              <strong>100%</strong>
+              <span>Produtividade prevista após consolidação.</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <span class="orb one"></span>
+          <span class="orb two"></span>
+          <span class="orb three"></span>
+          <div class="phone-glass">
+            <div class="phone-screen">
+              <div style="height:30px"></div>
+              <span class="chip">Hub 360 ativo</span>
+              <div class="mobile-card">
+                <div class="mini-row">
+                  <div>
+                    <div class="mini-title">Pipeline Vivo Tech</div>
+                    <div class="mini-value">R$ 486k</div>
+                  </div>
+                  <span class="chip">+31%</span>
+                </div>
+                <div class="bar"><span style="width:72%"></span></div>
+              </div>
+              <div class="mobile-card">
+                <div class="mini-title">Próxima melhor ação</div>
+                <div class="mini-value" style="font-size:1.05rem; line-height:1.35">Priorizar Segurança + Cloud em contas com fibra ativa.</div>
+                <div class="tags">
+                  <span class="tag">Doffos AI</span>
+                  <span class="tag">Score 88</span>
+                  <span class="tag">Follow-up 10h</span>
+                </div>
+              </div>
+              <div class="mobile-card">
+                <div class="mini-row">
+                  <div>
+                    <div class="mini-title">Pós-venda</div>
+                    <div class="mini-value">NPS 72</div>
+                  </div>
+                  <span class="chip">retenção</span>
+                </div>
+                <div class="bar"><span style="width:84%"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page" id="produtos">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Produtos Vivo Empresarial</p>
+          <h2>Portfólio organizado por necessidade de negócio.</h2>
+        </div>
+        <p class="section-copy">A página apresenta a oferta como uma jornada consultiva: primeiro o diagnóstico Vivo Tech, depois a composição de conectividade, mobilidade, voz, cloud, segurança, colaboração, IoT e gestão operacional.</p>
+      </div>
+      <div class="product-toolbar">
+        <div class="filters" aria-label="Filtrar produtos">
+          <button class="filter active" type="button" data-filter="all">Todos</button>
+          <button class="filter" type="button" data-filter="connect">Conectividade</button>
+          <button class="filter" type="button" data-filter="tech">Vivo Tech</button>
+          <button class="filter" type="button" data-filter="voice">Voz & atendimento</button>
+          <button class="filter" type="button" data-filter="hub">Hub 360</button>
+        </div>
+        <button class="btn btn-small" type="button" data-open-modal>Montar stack Vivo Tech</button>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card glass" data-category="connect">
+          <div>
+            <div class="product-top"><span class="chip">Conectividade</span><span class="icon-bubble">01</span></div>
+            <h3>Vivo Fibra, Internet Dedicada e redes corporativas</h3>
+            <p>Base para operação contínua, lojas, escritórios, atendimento, cloud e tráfego crítico. A Seven 360 conduz viabilidade, proposta e implantação.</p>
+          </div>
+          <div class="tags"><span class="tag">Fibra</span><span class="tag">Dedicada</span><span class="tag">Redes</span><span class="tag">Gestão de redes</span></div>
+        </article>
+        <article class="product-card glass" data-category="connect">
+          <div>
+            <div class="product-top"><span class="chip">Mobilidade</span><span class="icon-bubble">02</span></div>
+            <h3>Planos móveis 5G, M2M, eSIM e roteador 5G</h3>
+            <p>Linhas corporativas, times externos, tablets, POS, telemetria e operações móveis com governança de uso e gestão por carteira.</p>
+          </div>
+          <div class="tags"><span class="tag">5G</span><span class="tag">M2M</span><span class="tag">MDM</span><span class="tag">eSIM</span></div>
+        </article>
+        <article class="product-card glass" data-category="voice">
+          <div>
+            <div class="product-top"><span class="chip">Voz & colaboração</span><span class="icon-bubble">03</span></div>
+            <h3>SIP Trunking, Vivo Voz Negócio e PABX Virtual</h3>
+            <p>Telefonia avançada para atendimento, vendas, suporte e centralização de canais, com possibilidade de 0800, 0300 e número único.</p>
+          </div>
+          <div class="tags"><span class="tag">SIP</span><span class="tag">PABX</span><span class="tag">0800</span><span class="tag">0300</span></div>
+        </article>
+        <article class="product-card glass" data-category="tech">
+          <div>
+            <div class="product-top"><span class="chip">Vivo Tech</span><span class="icon-bubble">04</span></div>
+            <h3>Cloud, Microsoft 365, Google Workspace e e-mail profissional</h3>
+            <p>Camada digital para produtividade, colaboração, governança de contas e modernização da infraestrutura de pequenas, médias e grandes empresas.</p>
+          </div>
+          <div class="tags"><span class="tag">Microsoft 365</span><span class="tag">Google Workspace</span><span class="tag">Azure</span><span class="tag">AWS</span></div>
+        </article>
+        <article class="product-card glass" data-category="tech">
+          <div>
+            <div class="product-top"><span class="chip">Segurança</span><span class="icon-bubble">05</span></div>
+            <h3>XDR, segurança de redes, dados, identidade e SOC</h3>
+            <p>Oferta consultiva para proteger endpoints, infraestrutura, rede, credenciais e continuidade do negócio, com diagnóstico e priorização por risco.</p>
+          </div>
+          <div class="tags"><span class="tag">XDR</span><span class="tag">SOC</span><span class="tag">Dados</span><span class="tag">Identidade</span></div>
+        </article>
+        <article class="product-card glass" data-category="tech">
+          <div>
+            <div class="product-top"><span class="chip">IoT</span><span class="icon-bubble">06</span></div>
+            <h3>Wi-Fi Pro, Frota Inteligente, maquinário e agro</h3>
+            <p>Uso de conectividade e dados para marketing de proximidade, operação de frotas, gestão de ativos, sensores e eficiência operacional.</p>
+          </div>
+          <div class="tags"><span class="tag">Wi-Fi Pro</span><span class="tag">Frota</span><span class="tag">Maquinário</span><span class="tag">Open Gateway</span></div>
+        </article>
+        <article class="product-card glass" data-category="hub">
+          <div>
+            <div class="product-top"><span class="chip">CRM 360</span><span class="icon-bubble">07</span></div>
+            <h3>Gestão de vendas, implantação e pós-vendas</h3>
+            <p>Kanban comercial, forecast, tarefas, propostas, pedidos, onboarding, acompanhamento de SLA, renovações e upsell em uma visão única.</p>
+          </div>
+          <div class="tags"><span class="tag">Funil</span><span class="tag">Forecast</span><span class="tag">SLA</span><span class="tag">Retenção</span></div>
+        </article>
+        <article class="product-card glass" data-category="hub">
+          <div>
+            <div class="product-top"><span class="chip">Doffos AI</span><span class="icon-bubble">08</span></div>
+            <h3>IA para triagem, disparos, follow-up e priorização</h3>
+            <p>Camada de inteligência para classificar leads, sugerir argumentos, resumir reuniões, disparar próximos passos e gerar alertas de pós-venda.</p>
+          </div>
+          <div class="tags"><span class="tag">Lead scoring</span><span class="tag">Playbooks</span><span class="tag">Resumo</span><span class="tag">Automação</span></div>
+        </article>
+        <article class="product-card glass" data-category="hub">
+          <div>
+            <div class="product-top"><span class="chip">Consultoria</span><span class="icon-bubble">09</span></div>
+            <h3>Diagnóstico Vivo Tech por maturidade digital</h3>
+            <p>A porta de entrada do site: identificar cenário atual, gargalos, risco, oportunidades de cross-sell e stack ideal para cada empresa.</p>
+          </div>
+          <div class="tags"><span class="tag">CTA principal</span><span class="tag">Maturidade</span><span class="tag">Cross-sell</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section page" id="hub360">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Ecossistema Hub 360</p>
+          <h2>Do lead ao pós-venda, sem perder contexto.</h2>
+        </div>
+        <p class="section-copy">O Hub 360 é o conceito central do projeto: uma operação B2B que une pessoas, CRM, IA, produtos Vivo e governança comercial. O site inicial já apresenta essa arquitetura para posicionar a Seven 360 como consultoria e plataforma operacional.</p>
+      </div>
+      <div class="hub-wrap">
+        <div class="hub-orbit glass">
+          <div class="orbit-ring">
+            <div class="hub-center"><div><strong>Hub 360</strong><br><span>vendas + operação + IA</span></div></div>
+            <div class="orbit-node node-1"><b>Captação</b><span>Bases, campanhas e ICP por segmento.</span></div>
+            <div class="orbit-node node-2"><b>Triagem IA</b><span>Score, prioridade e próxima ação.</span></div>
+            <div class="orbit-node node-3"><b>Vivo Tech</b><span>Diagnóstico e stack de solução.</span></div>
+            <div class="orbit-node node-4"><b>CRM 360</b><span>Funil, forecast, SLA e carteira.</span></div>
+            <div class="orbit-node node-5"><b>Pós-venda</b><span>Retenção, expansão e NPS.</span></div>
+          </div>
+        </div>
+        <div class="hub-list">
+          <article class="process-card glass"><span class="step-number">1</span><div><h3>Aquisição e inteligência de mercado</h3><p>Entrada por base fria, carteira ativa, parceiros, campanhas segmentadas e priorização por ICP.</p></div></article>
+          <article class="process-card glass"><span class="step-number">2</span><div><h3>Triagem Doffos AI + humano</h3><p>Classificação automática, enriquecimento, histórico de contato e roteiro comercial por produto.</p></div></article>
+          <article class="process-card glass"><span class="step-number">3</span><div><h3>Diagnóstico Vivo Tech</h3><p>Mapeamento de conectividade, mobilidade, cloud, colaboração, segurança e IoT para compor a proposta.</p></div></article>
+          <article class="process-card glass"><span class="step-number">4</span><div><h3>Implantação e governança</h3><p>Pedido, documentação, viabilidade, instalação, ativação, SLA e indicadores operacionais.</p></div></article>
+          <article class="process-card glass"><span class="step-number">5</span><div><h3>Pós-venda e expansão</h3><p>Acompanhamento, renovação, upgrade, cross-sell, prevenção de churn e novos projetos de Vivo Tech.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page" id="case">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Case interno</p>
+          <h2>Máquina previsível de crescimento B2B.</h2>
+        </div>
+        <p class="section-copy">Este bloco converte os materiais de comitê em narrativa de site: foco em execução comercial, produtividade progressiva, inteligência artificial aplicada e investimento inicial enxuto para acelerar a operação Seven 360 Telecom.</p>
+      </div>
+
+      <div class="case-layout">
+        <div class="case-hero glass">
+          <div>
+            <span class="chip">IA + Humanos</span>
+            <h2 style="margin-top:18px;">Triagem + disparos + IA + agendamento = <span class="gradient-text">vendas</span>.</h2>
+            <p class="lead" style="font-size:1.05rem; max-width:650px;">O case posiciona a operação como um B2B Growth Engine: base mapeada, inteligência comercial, SDR/FDV orientado por dados, especialista para alto valor e pós-venda estruturado no CRM.</p>
+            <div class="formula" aria-label="Fórmula do case">
+              <div class="formula-row"><span class="formula-pill">Base qualificada</span><span class="formula-pill">Doffos AI</span><span class="formula-pill">Roteiro Vivo Tech</span></div>
+              <div class="formula-row"><span class="formula-pill">Agendamento</span><span class="formula-pill">Proposta consultiva</span><span class="formula-equal">=</span><span class="formula-pill">Venda previsível</span></div>
+            </div>
+          </div>
+          <div class="funnel">
+            <div class="funnel-step"><strong>1MM</strong><span>Universo de CNPJs mapeados no estado de SP, com aderência aos serviços Vivo.</span></div>
+            <div class="funnel-step"><strong>40k</strong><span>Taxa de abertura da mensagem e primeira resposta operacional.</span></div>
+            <div class="funnel-step"><strong>4k</strong><span>Contatos ativos para cadência comercial em quatro vendas diretas.</span></div>
+          </div>
+        </div>
+        <div class="case-side">
+          <div class="case-stat glass"><small>Start operacional</small><strong>5 Hunters</strong><p>Foco em aquisição, prospecção ativa, CNPJs, portabilidade, móvel, fibra e Vivo Tech.</p></div>
+          <div class="case-stat glass"><small>Camada de alto valor</small><strong>1 Especialista</strong><p>Atuação em contas estratégicas, soluções digitais, telefonia avançada, segurança e cloud.</p></div>
+          <div class="case-stat glass"><small>Blueprint inicial</small><strong>R$ 87.000</strong><p>Capital de giro, montagem de escritório, mobiliário, telefonia e infraestrutura básica.</p></div>
+          <div class="case-stat glass"><small>Ramp-up realista</small><strong>30 → 100%</strong><p>Maturidade progressiva: tração, aceleração, consolidação e produtividade completa.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page" aria-label="Roadmap tático">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Roadmap tático</p>
+          <h2>Penetração por produto e carteira.</h2>
+        </div>
+        <p class="section-copy">A estratégia comercial prioriza frentes com maior velocidade de conversão e maior valor por conta, sempre alimentando o CRM 360 e retroalimentando a IA com motivos de ganho, perda e expansão.</p>
+      </div>
+      <div class="roadmap">
+        <article class="road-card glass"><span class="chip">Voz móvel</span><h3>Avançagem de base</h3><ul><li>Usar base de fibra, móvel e carteira ativa.</li><li>Cross-sell com análise de consumo e portabilidade.</li><li>Meta: aumentar penetração de Vivo Total e móvel B2B.</li></ul></article>
+        <article class="road-card glass"><span class="chip">FTTH</span><h3>Inteligência de viabilidade</h3><ul><li>Combinar cockpit comercial e dados de cobertura.</li><li>Priorizar regiões de maior concentração de empresas.</li><li>Converter conectividade em porta para Vivo Tech.</li></ul></article>
+        <article class="road-card glass"><span class="chip">Avançados & TI</span><h3>Conversão para ecossistema Vivo</h3><ul><li>Campanhas para bases concorrentes e contas elegíveis.</li><li>Ofertas de segurança, cloud, colaboração e IoT.</li><li>Especialista entra em contas de maior ticket.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="section page" id="crm">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">CRM 360 interno</p>
+          <h2>Gestão de vendas e pós-vendas no mesmo sistema.</h2>
+        </div>
+        <p class="section-copy">O site antecipa a futura área interna: funil, carteira, tarefas, propostas, implantação, acompanhamento de SLA, pós-venda, expansão e integração com Doffos AI.</p>
+      </div>
+      <div class="glass" style="border-radius:38px; padding:18px;">
+        <div class="crm-board" aria-label="Board CRM 360">
+          <div class="crm-col"><h3>Prospecção</h3><div class="deal"><b>Indústria ABC</b><span>Fibra + Móvel 5G<br>Score 74</span></div><div class="deal"><b>Rede varejo SP</b><span>Wi-Fi Pro<br>Lead frio</span></div></div>
+          <div class="crm-col"><h3>Qualificação IA</h3><div class="deal"><b>Clínica Saúde</b><span>Google Workspace<br>Próxima ação: reunião</span></div><div class="deal"><b>Transportadora</b><span>Frota Inteligente<br>Score 86</span></div></div>
+          <div class="crm-col"><h3>Diagnóstico Vivo Tech</h3><div class="deal"><b>Grupo Educação</b><span>Segurança + Cloud<br>Risco: alto</span></div></div>
+          <div class="crm-col"><h3>Proposta</h3><div class="deal"><b>Atacado Norte</b><span>Internet Dedicada<br>R$ 18k ARR</span></div><div class="deal"><b>Serviços B2B</b><span>SIP + PABX<br>Decisor mapeado</span></div></div>
+          <div class="crm-col"><h3>Implantação</h3><div class="deal"><b>Food Service</b><span>Fibra + MDM<br>SLA instalação</span></div></div>
+          <div class="crm-col"><h3>Pós-venda</h3><div class="deal"><b>Conta Enterprise</b><span>Upsell XDR<br>Renovar em 45 dias</span></div><div class="deal"><b>Rede franquias</b><span>NPS 82<br>Cross-sell IoT</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page" id="doffos">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Integração Doffos AI</p>
+          <h2>IA como copiloto comercial e operacional.</h2>
+        </div>
+        <p class="section-copy">A integração proposta usa IA para acelerar cadência, atendimento, roteiros, análise de carteira e pós-venda. O protótipo mostra a tese; a execução técnica deverá validar APIs, LGPD, consentimento e trilhas de auditoria.</p>
+      </div>
+      <div class="ai-grid">
+        <article class="ai-card glass"><span class="chip">01</span><h3>Lead scoring e ICP</h3><p>Classifica potencial por segmento, cobertura, stack atual, sinais de compra e aderência ao portfólio Vivo Tech.</p></article>
+        <article class="ai-card glass"><span class="chip">02</span><h3>Disparos e follow-up</h3><p>Gera cadências por WhatsApp, e-mail e ligação, com mensagens orientadas por produto, estágio e persona.</p></article>
+        <article class="ai-card glass"><span class="chip">03</span><h3>Resumo de reuniões</h3><p>Transforma atendimento em histórico estruturado: dores, objeções, concorrente, oportunidade e próximos passos.</p></article>
+        <article class="ai-card glass"><span class="chip">04</span><h3>Playbooks Vivo Tech</h3><p>Sugere argumentos para cloud, segurança, IoT, voz, conectividade e colaboração conforme maturidade do cliente.</p></article>
+        <article class="ai-card glass"><span class="chip">05</span><h3>Alertas de pós-venda</h3><p>Identifica risco de churn, atrasos de implantação, baixa adoção, vencimentos e oportunidades de expansão.</p></article>
+        <article class="ai-card glass"><span class="chip">06</span><h3>Forecast e gestão</h3><p>Consolida pipeline, probabilidade, produtividade por função, carteira e previsibilidade mensal.</p></article>
+      </div>
+    </section>
+
+    <section class="section page" aria-label="DNA Seven 360 Telecom">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">DNA corporativo</p>
+          <h2>Experiência em telecom, tecnologia e automação.</h2>
+        </div>
+        <p class="section-copy">O case reforça a combinação de experiência B2B, atendimento consultivo, inovação, automação, IA e visão operacional para escalar vendas sem perder qualidade no pós-venda.</p>
+      </div>
+      <div class="founders">
+        <article class="founder glass"><div><div class="avatar">FB</div><h3>Fabiano Brito</h3><p>20 anos unindo tecnologia e negócios. Especialista em inovação para RH, automação e gestão de jornadas, com visão executiva para eficiência, escalabilidade e integração operacional.</p></div><span class="chip">Inovação + operação</span></article>
+        <article class="founder glass"><div><div class="avatar">EP</div><h3>Eduardo Peres</h3><p>Especialista em negócios B2B com 18 anos em telecomunicações. Viveu a evolução do CDMA ao 5G, com trajetória em jornada do cliente e gestão corporativa.</p></div><span class="chip">Telecom B2B</span></article>
+        <article class="founder glass"><div><div class="avatar">MV</div><h3>Miller Vieira</h3><p>Especialista em operações, automação e IA corporativa. Integra IA generativa, arquitetura de sistemas e automações em processos comerciais escaláveis.</p></div><span class="chip">IA + sistemas</span></article>
+      </div>
+    </section>
+
+    <section class="page" aria-label="CTA final">
+      <div class="cta-card glass">
+        <div>
+          <p class="eyebrow">CTA principal</p>
+          <h2>Comece pelo diagnóstico Vivo Tech da Seven 360 Telecom.</h2>
+          <p>O CTA concentra o objetivo comercial do site: coletar demanda, mapear maturidade digital e direcionar o cliente para o stack Vivo Empresarial adequado, com CRM e IA acompanhando cada etapa.</p>
+        </div>
+        <button class="btn btn-accent" type="button" data-open-modal>Solicitar diagnóstico</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer page">
+    <div><strong>Seven 360 Telecom</strong><br><span>Protótipo HTML para validação interna.</span></div>
+    <div>Conteúdo sujeito a validação comercial, jurídica, disponibilidade técnica e diretrizes de uso de marca.</div>
+  </footer>
+
+  <button class="btn btn-accent sticky-cta" type="button" data-open-modal>Vivo Tech</button>
+
+  <div class="modal-backdrop" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal glass">
+      <div class="modal-head">
+        <div>
+          <span class="chip"><span class="dot"></span> Diagnóstico Vivo Tech</span>
+          <h3 id="modalTitle">Mapear oportunidade</h3>
+          <p>Formulário demonstrativo para validar o CTA. Na versão final, os dados entram no CRM 360 e acionam Doffos AI.</p>
+        </div>
+        <button class="close" type="button" data-close-modal aria-label="Fechar">×</button>
+      </div>
+      <form id="leadForm">
+        <div class="form-grid">
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" placeholder="Responsável" required></div>
+          <div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" placeholder="Razão social / fantasia" required></div>
+          <div class="field"><label for="cnpj">CNPJ</label><input id="cnpj" name="cnpj" placeholder="00.000.000/0000-00"></div>
+          <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required></div>
+          <div class="field full"><label for="interesse">Interesse principal</label><select id="interesse" name="interesse"><option>Diagnóstico Vivo Tech</option><option>Vivo Fibra / Internet Dedicada</option><option>Planos móveis 5G / M2M / MDM</option><option>Cloud e colaboração</option><option>Segurança / XDR / SOC</option><option>CRM 360 + Doffos AI</option></select></div>
+          <div class="field full"><label for="observacao">Contexto</label><textarea id="observacao" name="observacao" placeholder="Descreva o cenário atual, dores e prioridade."></textarea></div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; align-items:center;">
+          <button class="btn btn-accent" type="submit">Enviar para CRM 360</button>
+          <span id="formStatus" class="subtle" role="status"></span>
+        </div>
+        <p class="form-note">Demonstração local: nenhuma informação é enviada. Integração real deve prever consentimento, base legal LGPD, logs, opt-out e política de retenção de dados.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('leadModal');
+    const openers = document.querySelectorAll('[data-open-modal]');
+    const close = document.querySelector('[data-close-modal]');
+    const statusEl = document.getElementById('formStatus');
+
+    function openModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      setTimeout(() => document.getElementById('nome').focus(), 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      statusEl.textContent = '';
+    }
+
+    openers.forEach(button => button.addEventListener('click', openModal));
+    close.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    document.getElementById('leadForm').addEventListener('submit', event => {
+      event.preventDefault();
+      statusEl.textContent = 'Lead simulado criado no CRM 360. Doffos AI: próxima ação gerada.';
+      event.currentTarget.reset();
+    });
+
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const productCards = document.querySelectorAll('[data-category]');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.filter;
+        filterButtons.forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        productCards.forEach(card => {
+          const show = selected === 'all' || card.dataset.category === selected;
+          card.style.display = show ? 'flex' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
